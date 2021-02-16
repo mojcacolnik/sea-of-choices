@@ -1,10 +1,22 @@
 {
-  "name": "seaOfChoices",
+  "name": "sea-of-choices",
   "version": "1.0.0",
   "description": "A modern tourist cruise ship agency website in the making. A project for Coyotiv School Of Software Engineering.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "./**/*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "repository": {
     "type": "git",
@@ -16,5 +28,14 @@
   "bugs": {
     "url": "https://github.com/mojcamojca92/seaOfChoices/issues"
   },
-  "homepage": "https://github.com/mojcamojca92/seaOfChoices#readme"
+  "homepage": "https://github.com/mojcamojca92/seaOfChoices#readme",
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^5.0.9",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
+  }
 }
