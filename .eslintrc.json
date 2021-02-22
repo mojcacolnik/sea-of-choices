@@ -13,10 +13,13 @@
       "eqeqeq": "off",
       "class-methods-use-this": "off"
     },
-    "settings": {
-      "react": {
-        "version": "latest"
-      }
-    }
-  }
+      "parserOptions": {
+          "ecmaVersion": 2018
+      },
   
+      "env": {
+          "es6": true
+      },
+      "parser": "babel-eslint"
+  
+}
