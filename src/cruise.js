@@ -4,6 +4,15 @@ class Cruise {
         this.endDate = endDate;
         this.route = route,
         this.passengers = [];
+        this.vacancy = true;
     }
-    
+    searchAvailiableCruises(startDate, endDate, route) {
+        if (this.vacancy) {
+            return `Listing availiable cruises from ${startDate} to ${endDate} in ${route} route.`
+        } else {
+            return `Sorry, the cruise is sold out.`
+        }
+    }
 }
+
+module.exports = Cruise;
