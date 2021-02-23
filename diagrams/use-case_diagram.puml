@@ -1,0 +1,14 @@
+@startuml
+ actor "Customer" as user
+ 
+ usecase "books cruise" as bookCruise
+ usecase "creates a user profile" as signUp 
+ usecase "customer profile account" as userProfile
+
+ user --> bookCruise
+ user --> signUp
+
+ signUp --> userProfile
+ bookCruise --> userProfile
+
+ @enduml 
