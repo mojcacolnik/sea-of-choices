@@ -27,6 +27,25 @@ module.exports = Customer;*/
 
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const cruise = require('./cruise');
+
+//separating concerns with minimal leaking
+/*const customer = {
+    fullName: {
+        type: String,
+        required: true,
+    },
+    birthDate: {
+        type: Date,
+        required: true,
+    },
+    accountNumber: {
+        type: Number,
+        required: true,
+    },
+    profileAccount: Boolean,
+}
+const customerSchema = new mongoose.Schema(customer);*/
 
 const customerSchema = new mongoose.Schema({
     fullName: {
@@ -37,19 +56,15 @@ const customerSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    idNumber: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
     accountNumber: {
         type: Number,
         required: true,
     },
-    profileAccount: Boolean
-});
+    profileAccount: Boolean,
+})
 
-customerSchema.methods.bookCruise = cruise => {
+
+/*customerSchema.methods.bookCruise = cruise => {
     cruise.passengers.push(this);
 }
 
@@ -58,6 +73,35 @@ customerSchema.methods.signUp = (passphrase) => {
     let password = passphrase;
     this.profileAccount = true;
     return `Dear ${username}, welcome aboard!`
+}*/
+
+class Customer {
+    async book(cruise) {
+        if (cruise.vacancy) {
+          cruise.passengers.push(this)
+          await this.save()  
+        } else {
+            throw new Error(`Cruise ${cruise} is sold out`)
+        }
+        
+        
+    }
+    async signUp(passphrase) {
+        if (username == this.fullName) {
+            throw new Error('You already have an account, log in instead')
+        } else {
+           let username = this.fullName;
+            let password = passphrase;
+            this.profileAccount = true;
+            await this.save();
+            return `Dear ${username}, welcome aboard!` 
+        }    
+    }
 }
+
+
+
+customerSchema.loadClass(Customer);
+customerSchema.plugin(autopopulate);
 
 module.exports = mongoose.model('Customer', customerSchema);

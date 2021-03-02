@@ -37,19 +37,31 @@ const cruiseSchema = new mongoose.Schema({
     ],
     passengers: [
         {
-            type: mongoose.Schema.Types.ObjectId, ref: 'Customer'
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Customer', 
+            autopopulate: true,
         }
     ],
     vacancy: Boolean
 });
 
-cruiseSchema.methods.searchAvailiableCruises = (startDate, endDate, route) => {
+class Cruise {
+    searchAvailableCruises(startDate, endDate, route) {
+        if (!this.vacancy ) return `Sorry, the cruise is sold out.`
+        this.vacancy = false; //
+        return `Listing availiable cruises from ${startDate} to ${endDate} in ${route} route.`
+    }
+ }
+/*cruiseSchema.methods.searchAvailiableCruises = (startDate, endDate, route) => {
     if (this.vacancy) {
         this.vacancy = false;
         return `Listing availiable cruises from ${startDate} to ${endDate} in ${route} route.`
     } else {
         return `Sorry, the cruise is sold out.`
     }
-}
+}*/
+
+cruiseSchema.loadClass(Cruise);
+cruiseSchema.plugin(autopopulate);
 
 module.exports = mongoose.model('Cruise', cruiseSchema);
