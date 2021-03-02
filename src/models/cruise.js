@@ -1,23 +1,3 @@
-/*class Cruise {
-    constructor(startDate, endDate, route) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.route = route,
-        this.passengers = [];
-        this.vacancy = true;
-    }
-    searchAvailiableCruises(startDate, endDate, route) {
-        if (this.vacancy) {
-            this.vacancy = false;
-            return `Listing availiable cruises from ${startDate} to ${endDate} in ${route} route.`
-        } else {
-            return `Sorry, the cruise is sold out.`
-        }
-    }
-}
-
-module.exports = Cruise; */
-
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
 
@@ -48,18 +28,11 @@ const cruiseSchema = new mongoose.Schema({
 class Cruise {
     searchAvailableCruises(startDate, endDate, route) {
         if (!this.vacancy ) return `Sorry, the cruise is sold out.`
-        this.vacancy = false; //
+        this.vacancy = false; 
         return `Listing availiable cruises from ${startDate} to ${endDate} in ${route} route.`
     }
  }
-/*cruiseSchema.methods.searchAvailiableCruises = (startDate, endDate, route) => {
-    if (this.vacancy) {
-        this.vacancy = false;
-        return `Listing availiable cruises from ${startDate} to ${endDate} in ${route} route.`
-    } else {
-        return `Sorry, the cruise is sold out.`
-    }
-}*/
+    
 
 cruiseSchema.loadClass(Cruise);
 cruiseSchema.plugin(autopopulate);
