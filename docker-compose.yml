@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app: 
+    image: sea-of-choices
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment: 
+      #- MONGODB_USERNAME=mojcacolnik92
+      #- MONGODB_PASSWORD=8xqU0uIGp3a07oFd
+      #- MONGODB_DATABASE=dbName
+      #- MONGODB_REMOTE=true
+      - MONGO_CONNECTION_STRING=mongodb://mongo/sea-of-choices
+    ports:
+      - 3000:3000
+      - 35729:35729
+    volumes:
+      - ./src:/app/src
+  mongo:
+    image: mongo
+    ports: 
+      - 27017:270117
