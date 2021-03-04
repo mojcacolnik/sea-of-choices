@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     environment: 
-      #- MONGODB_USERNAME=
-      #- MONGODB_PASSWORD=
-      #- MONGODB_DATABASE=
+      #- MONGODB_USERNAME
+      #- MONGODB_PASSWORD
+      #- MONGODB_DATABASE
       #- MONGODB_REMOTE=true
       - MONGO_CONNECTION_STRING=mongodb://mongo/sea-of-choices
     ports:
