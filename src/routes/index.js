@@ -40,4 +40,8 @@ router.get('/search-cruises', async(req, res) => {
   res.render('search-cruises', { cruises })
 })
 
+router.get('/about-us', (req, res) => {
+  res.render('about-us')
+})
+
 module.exports = router;
