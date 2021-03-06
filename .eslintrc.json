@@ -19,7 +19,5 @@
   
       "env": {
           "es6": true
-      },
-      "parser": "babel-eslint"
-  
-}
+      }
+  }
