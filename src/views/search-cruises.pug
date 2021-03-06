@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+
+    h2.text-primary Available cruises:
+    br
+    br
+    hr
+    section
+        .container 
+            .row 
+                each cruise in cruises
+                    .col-12.col-md-6.col-lg-4
+                        .card(style='width: 18rem;')
+                            img.card-img-top(src='https://via.placeholder.com/40/09f/fff.png' alt='cruise-img')
+                            .card-body
+                                h5.card-title #{cruise._id}
+                                p.card-text
+                                | Some quick example text to build on the card title and make up the bulk of the card's content.
+                            ul.list-group.list-group-flush
+                                li.list-group-item Departure: #{cruise.startDate}
+                                li.list-group-item End: #{cruise.endDate}
+                                li.list-group-item Route: #{cruise.route}
+                            .card-body
+                                a.card-link(href='#') BOOK
+                                a.card-link(href='#') CRUISE DETAILS    
