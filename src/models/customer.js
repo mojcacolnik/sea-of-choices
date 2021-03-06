@@ -21,20 +21,21 @@ const customerSchema = new mongoose.Schema({
 
 class Customer {
     async book(cruise) {
+        const availableCruises = await Cruise.find(cruise)
         if (cruise.vacancy) {
-          cruise.passengers.push(this)
-          await this.save()  
+          cruise.guests.push(this)
+          await this.save()
+          await cruise.save()  
         } else {
             throw new Error(`Cruise ${cruise} is sold out`)
         }
-        
-        
-    }
+     }
+     
     async signUp(passphrase) {
-        if (username == this.fullName) {
+        if (this.profileAccount == true) {
             throw new Error('You already have an account, log in instead')
         } else {
-           let username = this.fullName;
+            let username = this.fullName;
             let password = passphrase;
             this.profileAccount = true;
             await this.save();

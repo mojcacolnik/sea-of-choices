@@ -12,10 +12,10 @@ const cruiseSchema = new mongoose.Schema({
     },
     route: [
         {
-            type: Array,
+            type: String,
         }
     ],
-    passengers: [
+    guests: [
         {
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'Customer', 
@@ -26,11 +26,7 @@ const cruiseSchema = new mongoose.Schema({
 });
 
 class Cruise {
-    searchAvailableCruises(startDate, endDate, route) {
-        if (!this.vacancy ) return `Sorry, the cruise is sold out.`
-        this.vacancy = false; 
-        return `Listing availiable cruises from ${startDate} to ${endDate} in ${route} route.`
-    }
+    
  }
     
 
