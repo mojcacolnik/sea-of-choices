@@ -1,0 +1,27 @@
+@startuml classdiagram
+class Cruise {
+    startDate: number,
+    endDate: number,
+    route: string,
+    passengers: [],
+    vacancy: boolean
+}
+
+class Customer {
+    fullName: string,
+    birthDate: number,
+    idNumber: number,
+    cabinNumber: number,
+    accountNumber: number,
+    profileAccount: boolean
+}
+class SignUp {
+    customer: string,
+    password: string
+}
+
+Customer o-> Cruise : books
+Customer *-> SignUp : creates a profile
+Cruise --> SignUp : saves cruise in user profile
+
+@enduml
