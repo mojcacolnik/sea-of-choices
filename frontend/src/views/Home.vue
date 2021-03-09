@@ -1,19 +1,12 @@
-<template lang="pug">
-  .home
-    img(alt="Vue logo" src="../assets/logo.png")
-    HelloWorld(msg="Welcome to Your Vue.js App")
-    div(v-for="cruise in cruises") {{ cruise._id }} leaves on {{ cruise.startDate}}
-</template>
-
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 import axios from "axios"
+import UserCard from '@/components/UserCard.vue'
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    UserCard
   },
   data() {
     return {
@@ -23,8 +16,16 @@ export default {
   async created() {
     const cruisesRequest = await axios.get('/api/cruises')
 
-    this.cruises = cruisesRequest.data
+    this.cruises = cruisesRequest.data.cruises
   }
 
 }
 </script>
+
+<template lang="pug">
+  .home
+    h1 Sea Of Choices
+    UserCard(v-for="cruise in cruises" :cruise="cruise")
+</template>
+
+

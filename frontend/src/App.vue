@@ -1,13 +1,12 @@
 <template lang="pug">
-  <div id="app">
-  h1 blablabla
-    <div id="nav">
-      <router-link to="/">HomePage</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
-</template>
+  #app
+    h1 blablabla
+      .nav
+        router-link(to="/") Home
+        router-link(to="/about") About
+      router-view
+   
+ </template>
 
 <style lang="scss">
 #app {
