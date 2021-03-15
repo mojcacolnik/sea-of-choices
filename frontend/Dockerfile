@@ -8,6 +8,6 @@ RUN npm install
 
 ADD public ./public
 ADD .browserslistrc .eslintrc.js babel.config.js vue.config.js ./
-ADD .browserslistrc .prettierrc .eslintrc.js babel.config.js vue.config.js ./
+
 
 CMD [ "npm", "run", "serve" ]
