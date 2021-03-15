@@ -37,7 +37,7 @@ router.get('/search-cruises', async(req, res) => {
   console.log('Query string', req.query)
   const cruises = await Cruise.find({})
   //console.log('Cruises', cruises)
-  res.render('search-cruises', { cruises })
+  res.send(cruises)
 })
 
 router.get('/about-us', (req, res) => {
