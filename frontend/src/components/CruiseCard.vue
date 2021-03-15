@@ -1,10 +1,10 @@
 <script>
 export default {
-    name: 'UserCard',
+    name: 'CruiseCard',
     props: ['cruise'],
     data() {
         return {
-            defaultBio: 'This cruise blabla'
+            defaultBio: 'This cruise is pending'
         }
     }
 }
@@ -13,8 +13,9 @@ export default {
 <template lang="pug">
 .box
     h2 Sail to: {{ cruise.route }}
-    p Departure: {{ cruise.startDate}}
+    p Departure: {{ cruise.startDate }}
     p End: {{ cruise.endDate }}
+    p {{ defaultBio }}
 </template>
 
 <style lang="scss" scoped>
@@ -22,7 +23,7 @@ export default {
     padding: 2rem;
     border: 2px solid blue;
     border-radius: 0.3rem;
-    background: lightgray;
+    background: lightskyblue;
 }
 
 
