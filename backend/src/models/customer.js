@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
 const cruise = require('./cruise');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 
 const customerSchema = new mongoose.Schema({
@@ -48,5 +49,8 @@ class Customer {
 
 customerSchema.loadClass(Customer);
 customerSchema.plugin(autopopulate);
+customerSchema.plugin(passportLocalMongoose, {
+    usernameField: 'email',
+})
 
 module.exports = mongoose.model('Customer', customerSchema);
