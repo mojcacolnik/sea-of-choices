@@ -61,16 +61,24 @@ const store = new Vuex.Store({
     incrementCount({ commit }) {
       commit(mutations.INCREMENT_COUNT)
     },
-    async fetchUser(store, id) {
-      const cruiseRequest = await axios.get(`/api/cruises/${id}`)
+    async fetchCruise(store, title) {
+      const cruiseRequest = await axios.get(`/api/cruises/${title}`)
       return cruiseRequest.data
     },
-    async fetchUsers() {
+    async fetchCruises() {
       const cruisesRequest = await axios.get('/api/cruises')
       return cruisesRequest.data
     },
+    async fetchUser(store, profileId) {
+      const userRequest = await axios.get(`/api/users/${profileId}`)
+      return userRequest.data
+    },
+    async fetchUsers() {
+      const usersRequest = await axios.get('/api/users')
+      return usersRequest.data
+    },
     async fetchSession({ commit }) {
-      const user = await axios.get('/api/accounts/session')
+      const user = await axios.get('/api/account/session')
       commit(mutations.SET_USER, user.data || null)
     },
     async login({ commit }, credentials) {
