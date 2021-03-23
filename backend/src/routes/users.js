@@ -31,9 +31,14 @@ router.get('/initialize', async (req, res) => {
   await sandra.save()
 })
 
+router.get('/users', async (req, res) => {
+  const users = await Customer.find({})
+  res.send(users)
+})
+
 router.get('/users/:profileId', async function(req, res, next) {
-  const customer = await customers.findById(req.params.profileId) 
-  if (customer) res.render('customer', {customer})
+  const user = await Customer.findById(req.params.profileId) 
+  if (user) res.render('user', {user})
   else {
     console.log('Please sign up first!');
     res.sendStatus(404);

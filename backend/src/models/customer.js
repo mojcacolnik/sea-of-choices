@@ -5,17 +5,17 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 
 const customerSchema = new mongoose.Schema({
-    fullName: {
+    name: {
         type: String,
         required: true,
     },
     birthDate: {
-        type: Date,
+        type: Number,
         required: true,
     },
     accountNumber: {
         type: Number,
-        required: true,
+        
     },
     profileAccount: Boolean,
 })

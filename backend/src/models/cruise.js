@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
 
 const cruiseSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+        unique: true
+    },
     startDate: {
         type: Date,
         required: true,
@@ -19,7 +24,7 @@ const cruiseSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'Customer', 
-            autopopulate: true,
+            autopopulate: { maxDepth: 2 }
         }
     ],
     vacancy: Boolean

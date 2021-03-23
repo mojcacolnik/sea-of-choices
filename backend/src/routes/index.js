@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 
 const mockCruises = [
   Cruise.create({
+    title: 'Mediteran',
     startDate: new Date('12-04-2022'),
     endDate: new Date('9-04-2022'),
     route: ['Genova', 'Mallorca', 'Barcelona'],
@@ -18,6 +19,7 @@ const mockCruises = [
     vacancy: true
   }),
   Cruise.create({
+    title: 'Southern',
     startDate: new Date('11-26-2021'),
     endDate: new Date('12-30-2021'),
     route: ['Venice', 'Qatar', 'Santorini'],
@@ -25,6 +27,7 @@ const mockCruises = [
     vacancy: true
   }),
   Cruise.create({
+    title: 'Tropic',
     startDate: new Date('3-3-2022'),
     endDate: new Date('4-3-2022'),
     route: ['Miami', 'Hawaii'],
