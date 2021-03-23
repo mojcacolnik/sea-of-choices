@@ -29,8 +29,8 @@ router.get('/users', async (req, res) => {
 })
 
 router.get('/users/:profileId', async function(req, res, next) {
-  const user = await Customer.findById(req.params.profileId) 
-  if (user) res.render('user', {user})
+  const user = await Customer.findById(req.params.profileId)
+  if (user) res.send(user)
   else {
     console.log('Please sign up first!');
     res.sendStatus(404);
