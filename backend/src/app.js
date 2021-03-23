@@ -7,6 +7,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session)
 const passport = require('passport');
 const Customer = require('./models/customer');
+const cors = require('cors')
 require('dotenv').config()
 
 var indexRouter = require('./routes/index');
@@ -18,6 +19,16 @@ const mongooseConnection = require('./database-connection')
 const socketService = require('./socket-service')
 
 var app = express();
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true
+
+  })
+)
+
+app.set('trust proxy', 1)
 
 app.set('io', socketService)
 
@@ -36,6 +47,8 @@ app.use(session({
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000,
     path: '/api',
+    sameSite: process.env.NODE_EV == 'production' ? 'none' : 'strict',
+    secure: process.env.NODE_EV == 'production'
 }
 }));
 
