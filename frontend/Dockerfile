@@ -2,6 +2,8 @@ FROM node:alpine
 
 WORKDIR /app
 
+COPY . .
+
 ADD package.json package-lock.json ./
 
 RUN npm install
