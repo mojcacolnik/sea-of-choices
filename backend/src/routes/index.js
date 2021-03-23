@@ -44,7 +44,7 @@ router.get('/initialize', async (req, res) => {
   })
 
   res.sendStatus(200)
-  
+
 })
 
 router.get('/search-cruises', async(req, res) => {
@@ -54,8 +54,8 @@ router.get('/search-cruises', async(req, res) => {
   res.send(cruises)
 })
 
-router.get('/about-us', (req, res) => {
-  res.render('about-us')
-})
+// router.get('/about-us', (req, res) => {
+//   res.render('about-us')
+// })
 
 module.exports = router;
