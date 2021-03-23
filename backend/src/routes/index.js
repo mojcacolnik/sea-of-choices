@@ -9,7 +9,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Wanna feel free? Cruise with me!' });
 });
 
-const mockCruises = [
+router.get('/initialize', async (req, res) => {
+  const mojca = new Customer({ name : 'mojca', birthDate: Date.now(), email: 'mojca@mojca.si' })
+  await mojca.setPassword('test')
+  await mojca.save()
+
+  const sandra = new Customer({ name: 'sandra', birthDate: Date.now(), email: 'sandra@sandra.si' })
+  await sandra.setPassword('test2')
+  await sandra.save()
+
   Cruise.create({
     title: 'Mediteran',
     startDate: new Date('12-04-2022'),
@@ -17,7 +25,7 @@ const mockCruises = [
     route: ['Genova', 'Mallorca', 'Barcelona'],
     guests: [],
     vacancy: true
-  }),
+  })
   Cruise.create({
     title: 'Southern',
     startDate: new Date('11-26-2021'),
@@ -25,7 +33,7 @@ const mockCruises = [
     route: ['Venice', 'Qatar', 'Santorini'],
     guests: [],
     vacancy: true
-  }),
+  })
   Cruise.create({
     title: 'Tropic',
     startDate: new Date('3-3-2022'),
@@ -34,7 +42,10 @@ const mockCruises = [
     guests: [],
     vacancy: true
   })
-]
+
+  res.sendStatus(200)
+  
+})
 
 router.get('/search-cruises', async(req, res) => {
   // console.log('Query string', req.query)
