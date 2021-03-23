@@ -4,3 +4,6 @@ node_modules
 .prettierignore
 .prettierrc
 Dockerfile
+test
+jest.config.js
+jest.setup.js
