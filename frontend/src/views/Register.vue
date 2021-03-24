@@ -20,7 +20,7 @@ export default {
 
       try {
         await this.register({
-          name: this.name,
+          fullName: this.name,
           age: this.age,
           email: this.email,
           password: this.password
@@ -41,8 +41,8 @@ export default {
       h1 Create a new account
       label(for="name") Name:&nbsp;
         input(v-model="name" id="name" type="text" placeholder="Your name" required)
-      label(for="age") Age:&nbsp;
-        input(v-model="age" id="age" type="number" placeholder="Your age" required)
+      label(for="age") Birth Date:&nbsp;
+        input(v-model="age" id="age" type="date" placeholder="Your age" required)
       label(for="email") Email:&nbsp;
         input(v-model="email" id="email" type="email" placeholder="Your email" required)
       label(for="password") Password:&nbsp;

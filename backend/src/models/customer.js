@@ -5,17 +5,17 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 
 const customerSchema = new mongoose.Schema({
-    fullName: {
+    name: {
         type: String,
         required: true,
     },
     birthDate: {
-        type: Date,
+        type: Number,
         required: true,
     },
     accountNumber: {
         type: Number,
-        required: true,
+
     },
     profileAccount: Boolean,
 })
@@ -26,12 +26,12 @@ class Customer {
         if (cruise.vacancy) {
           cruise.guests.push(this)
           await this.save()
-          await cruise.save()  
+          await cruise.save()
         } else {
             throw new Error(`Cruise ${cruise} is sold out`)
         }
      }
-     
+
     async signUp(passphrase) {
         if (this.profileAccount == true) {
             throw new Error('You already have an account, log in instead')
@@ -40,8 +40,8 @@ class Customer {
             let password = passphrase;
             this.profileAccount = true;
             await this.save();
-            return `Dear ${username}, welcome aboard!` 
-        }    
+            return `Dear ${username}, welcome aboard!`
+        }
     }
 }
 

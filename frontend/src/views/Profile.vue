@@ -31,11 +31,11 @@ export default {
 
 <template lang="pug">
   .home
-    h1 Picories {{ user.name }}
+    h1 Sea of Choices {{ user.name }}
     p The time is: {{ time }}
     h2 Users
     div(v-for="user in users")
-      router-link(:to="`/users/${user._id}`") {{ user.name }}
+      router-link(:to="`/users/${user.profileId}`") {{ user.name }}
     div(v-if="liveStreams.length")
       h2 Live streams
       div(v-for="stream in liveStreams")

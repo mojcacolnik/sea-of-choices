@@ -21,19 +21,16 @@ const Customer = require('../models/customer');
 // ]
 
 /* GET users listing. */
-router.get('/initialize', async (req, res) => {
-  const mojca = new Customer({ name : 'mojca', age: 28, email: 'mojca@mojca.si' })
-  await mojca.setPassword('test')
-  await mojca.save()
 
-  const sandra = new Customer({ name: 'sandra', age: 35, email: 'sandra@sandra.si' })
-  await sandra.setPassword('test2')
-  await sandra.save()
+
+router.get('/users', async (req, res) => {
+  const users = await Customer.find({})
+  res.send(users)
 })
 
 router.get('/users/:profileId', async function(req, res, next) {
-  const customer = await customers.findById(req.params.profileId) 
-  if (customer) res.render('customer', {customer})
+  const user = await Customer.findById(req.params.profileId)
+  if (user) res.send(user)
   else {
     console.log('Please sign up first!');
     res.sendStatus(404);
