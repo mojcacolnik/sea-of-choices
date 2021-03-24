@@ -23,12 +23,12 @@ export default {
 <template lang="pug">
   #app
     #nav
-      router-link(to="/register") Register 
-      router-link(to="/login") Login
-      router-link(to="/profile") Profile 
-      a(@click='doLogout') Logout 
+      router-link(to="/register") REGISTER
+      router-link(to="/login") LOGIN
+      router-link(to="/profile") PROFILE
+      a(@click='doLogout') Logout
     router-view
-   
+
  </template>
 
 <style lang="scss">
