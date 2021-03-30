@@ -1,9 +1,9 @@
-const express = require('express');
-const { user } = require('../database-connection');
-const router = express.Router();
+const express = require('express')
+const { user } = require('../database-connection')
+const router = express.Router()
 
-const Cruise = require('../models/cruise');
-const Customer = require('../models/customer');
+const Cruise = require('../models/cruise')
+const Customer = require('../models/customer')
 
 // const customers = [
 //   Customer.create({
@@ -22,20 +22,18 @@ const Customer = require('../models/customer');
 
 /* GET users listing. */
 
-
-router.get('/users', async (req, res) => {
+router.get('/', async (req, res) => {
   const users = await Customer.find({})
   res.send(users)
 })
 
-router.get('/users/:profileId', async function(req, res, next) {
+router.get('/:profileId', async function (req, res, next) {
   const user = await Customer.findById(req.params.profileId)
   if (user) res.send(user)
   else {
-    console.log('Please sign up first!');
-    res.sendStatus(404);
-}
-}
-)
+    console.log('Please sign up first!')
+    res.sendStatus(404)
+  }
+})
 
-module.exports = router;
+module.exports = router

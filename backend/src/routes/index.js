@@ -1,16 +1,17 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const Cruise = require('../models/cruise');
-const Customer = require('../models/customer');
+const Cruise = require('../models/cruise')
+const Customer = require('../models/customer')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Wanna feel free? Cruise with me!' });
-});
+router.get('/', async (req, res, next) => {
+  const cruises = await Cruise.find({})
+  res.send(cruises)
+})
 
 router.get('/initialize', async (req, res) => {
-  const mojca = new Customer({ name : 'mojca', birthDate: Date.now(), email: 'mojca@mojca.si' })
+  const mojca = new Customer({ name: 'mojca', birthDate: Date.now(), email: 'mojca@mojca.si' })
   await mojca.setPassword('test')
   await mojca.save()
 
@@ -24,7 +25,7 @@ router.get('/initialize', async (req, res) => {
     endDate: new Date('9-04-2022'),
     route: ['Genova', 'Mallorca', 'Barcelona'],
     guests: [],
-    vacancy: true
+    vacancy: true,
   })
   Cruise.create({
     title: 'Southern',
@@ -32,7 +33,7 @@ router.get('/initialize', async (req, res) => {
     endDate: new Date('12-30-2021'),
     route: ['Venice', 'Qatar', 'Santorini'],
     guests: [],
-    vacancy: true
+    vacancy: true,
   })
   Cruise.create({
     title: 'Tropic',
@@ -40,14 +41,13 @@ router.get('/initialize', async (req, res) => {
     endDate: new Date('4-3-2022'),
     route: ['Miami', 'Hawaii'],
     guests: [],
-    vacancy: true
+    vacancy: true,
   })
 
   res.sendStatus(200)
-
 })
 
-router.get('/search-cruises', async(req, res) => {
+router.get('/search-cruises', async (req, res) => {
   // console.log('Query string', req.query)
   const cruises = await Cruise.find({})
   //console.log('Cruises', cruises)
@@ -58,4 +58,4 @@ router.get('/search-cruises', async(req, res) => {
 //   res.render('about-us')
 // })
 
-module.exports = router;
+module.exports = router
