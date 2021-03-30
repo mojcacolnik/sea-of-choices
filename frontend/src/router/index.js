@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import CruiseList from '../views/CruiseList.vue'
-import CruiseDetail from '../views/CruiseDetail.vue'
 import Profile from '../views/Profile.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import UserDetail from '../views/UserDetail.vue'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -16,20 +15,17 @@ export default function init(store) {
     routes: [
       {
         path: '/',
-        name: 'Profile',
-        component: Profile
+        name: 'Home',
+        component: Home
       },
       {
         path: '/users/:id',
         name: 'UserDetail',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: UserDetail
       },
       {
         path: '/register',
-        name: 'register',
+        name: 'Register',
         component: Register,
         beforeEnter(to, from, next) {
           if (store.state.user) return next('/profile')
@@ -38,7 +34,7 @@ export default function init(store) {
       },
       {
         path: '/login',
-        name: 'login',
+        name: 'Login',
         component: Login,
         beforeEnter(to, from, next) {
           if (store.state.user) return next('/profile')
@@ -47,7 +43,7 @@ export default function init(store) {
       },
       {
         path: '/profile',
-        name: 'profile',
+        name: 'Profile',
         component: Profile,
         beforeEnter(to, from, next) {
           if (!store.state.user) return next('/login')
@@ -57,4 +53,3 @@ export default function init(store) {
     ]
   })
 }
-
