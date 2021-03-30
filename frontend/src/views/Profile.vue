@@ -30,7 +30,7 @@ export default {
 </script>
 
 <template lang="pug">
-  .home
+  .home(v-if="user")
     h1 Sea of Choices {{ user.name }}
     p The time is: {{ time }}
     h2 Users
