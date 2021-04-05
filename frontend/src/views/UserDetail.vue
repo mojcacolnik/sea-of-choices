@@ -13,7 +13,7 @@ export default {
     }
   },
   async created() {
-    this.user = await this.fetchUser(this.$route.params.id)
+    this.user = await this.fetchUser(this.$route.params.profileId)
     this.cruise = await this.fetchCruise(this.$route.params.id)
   },
   methods: {
@@ -26,8 +26,8 @@ export default {
   .about
     h1 This is user detail:
       div(v-if="user")
-      div(v-for="user in users")
-        p {{ user.name }}
+        div(v-for="user in users")
+          p {{ user.name }}
     h2 This is your cruise detail
         CruiseCard(:cruise="cruise" v-if="cruise")
           p {{ cruise.title }}

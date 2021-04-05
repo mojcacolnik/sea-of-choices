@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       name: '',
-      age: null,
+      birthDate: null,
       email: '',
       password: '',
 
@@ -20,8 +20,8 @@ export default {
 
       try {
         await this.register({
-          fullName: this.name,
-          age: this.age,
+          name: this.name,
+          birthDate: this.birthDate,
           email: this.email,
           password: this.password
         })
@@ -42,7 +42,7 @@ export default {
       label(for="name") Name:&nbsp;
         input(v-model="name" id="name" type="text" placeholder="Your name" required)
       label(for="age") Birth Date:&nbsp;
-        input(v-model="age" id="age" type="date" placeholder="Your age" required)
+        input(v-model="birthDate" id="birthDate" type="date" required)
       label(for="email") Email:&nbsp;
         input(v-model="email" id="email" type="email" placeholder="Your email" required)
       label(for="password") Password:&nbsp;

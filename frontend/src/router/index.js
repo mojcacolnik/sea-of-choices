@@ -19,9 +19,9 @@ export default function init(store) {
         component: Home
       },
       {
-        path: '/users/:id',
+        path: '/users/:profileId',
         name: 'UserDetail',
-        component: UserDetail
+        component: { UserDetail }
       },
       {
         path: '/register',

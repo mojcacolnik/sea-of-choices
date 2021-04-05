@@ -4,7 +4,7 @@ services:
     image: frontend
     build:
       context: frontend
-      dockerfile: dev.Dockerfile
+      dockerfile: Dockerfile
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.frontend.rule=Host(`picories.localhost`)'
@@ -18,7 +18,7 @@ services:
     image: backend
     build:
       context: backend
-      dockerfile: dev.Dockerfile
+      dockerfile: Dockerfile
     environment:
       # - MONGODB_USERNAME
       # - MONGODB_PASSWORD
