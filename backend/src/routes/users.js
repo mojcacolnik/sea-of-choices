@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
   res.send(users)
 })
 
-router.get('/:profileId', async function (req, res, next) {
+router.get('/:profileId', async (req, res) => {
   const user = await Customer.findById(req.params.profileId)
   if (user) res.send(user)
   else {
