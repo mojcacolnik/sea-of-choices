@@ -33,17 +33,17 @@ export default {
           #navbarNav.collapse.navbar-collapse
             ul.navbar-nav
               li.nav-item
-                router-link(to="/") Home
+                router-link(to="/") Home &nbsp;
               li.nav-item
-                router-link(to="/ships") Ships
+                router-link(to="/ships") Ships &nbsp;
               li.nav-item
-                router-link(to="/about-us") About Us
+                router-link(to="/about-us") About Us &nbsp;
               li.nav-item
-                router-link(to="/store") Store
+                router-link(to="/store") Store &nbsp;
               li.nav-item
-                router-link.button.btn.btn-primary(to="/login") Login
+                router-link.button.btn.btn-primary(to="/login") &nbsp; Login &nbsp;
               li.nav-item
-                router-link.button.btn.btn-success(to="/register") Sign Up
+                router-link.button.btn.btn-success(to="/register") &nbsp; Sign Up &nbsp;
       //- router-link(to="/") HOME |
       //- router-link(to="/register") REGISTER |&nbsp;
       //- router-link(to="/login") LOGIN | &nbsp;
