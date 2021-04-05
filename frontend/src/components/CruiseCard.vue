@@ -12,7 +12,7 @@ export default {
 
 <template lang="pug">
 .box
-    h2 Sail to: {{ cruise.route }}
+    h2 Cruise: {{ cruise.title }}
     p Departure: {{ cruise.startDate }}
     p End: {{ cruise.endDate }}
     p {{ defaultBio }}
