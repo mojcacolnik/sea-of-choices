@@ -8,8 +8,8 @@ export default {
   components: { CruiseCard, Counter },
   data() {
     return {
-      cruise: null,
-      user: null
+      cruise: [],
+      user: []
     }
   },
   async created() {

@@ -23,9 +23,10 @@ export default {
 <template lang="pug">
   #app
     #nav
-      router-link(to="/register") REGISTER
-      router-link(to="/login") LOGIN
-      router-link(to="/profile") PROFILE
+      router-link(to="/") HOME |
+      router-link(to="/register") REGISTER |&nbsp;
+      router-link(to="/login") LOGIN | &nbsp;
+      router-link(to="/profile") PROFILE | &nbsp;
       a(@click='doLogout') Logout
     router-view
 
