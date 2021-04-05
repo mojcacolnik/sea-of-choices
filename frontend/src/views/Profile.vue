@@ -30,12 +30,12 @@ export default {
 </script>
 
 <template lang="pug">
-  .home(v-if="user")
+  .home(v-if="user" :user="user")
     h1 Sea of Choices {{ user.name }}
     p The time is: {{ time }}
     h2 Users
     div(v-for="user in users")
-      router-link(:to="`/users/${user.profileId}`") {{ user.name }}
+      router-link(to="`/users/${user.profileId}`") {{ user.name }}
     div(v-if="liveStreams.length")
       h2 Live streams
       div(v-for="stream in liveStreams")
