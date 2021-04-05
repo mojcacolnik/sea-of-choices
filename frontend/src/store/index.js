@@ -40,6 +40,7 @@ const store = new Vuex.Store({
   state: {
     count: 0,
     user: null,
+    cruise: [],
     currentLiveStream: null,
     liveStreams: [],
     liveStreamMessages: []
@@ -65,8 +66,8 @@ const store = new Vuex.Store({
     incrementCount({ commit }) {
       commit(mutations.INCREMENT_COUNT)
     },
-    async fetchCruise(store, title) {
-      const cruiseRequest = await axios.get(`/api/cruises/${title}`)
+    async fetchCruise(store, id) {
+      const cruiseRequest = await axios.get(`/api/cruises/${id}`)
       return cruiseRequest.data
     },
     async fetchCruises() {
