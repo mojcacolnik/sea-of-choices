@@ -46,8 +46,8 @@ app.use(session({
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000,
     path: '/api',
-    sameSite: process.env.NODE_EV == 'production' ? 'none' : 'strict',
-    secure: process.env.NODE_EV == 'production'
+    sameSite: process.env.NODE_ENV == 'production' ? 'none' : 'strict',
+    secure: process.env.NODE_ENV == 'production'
 }
 }));
 
