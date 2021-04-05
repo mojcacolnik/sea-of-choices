@@ -10,7 +10,7 @@ const customerSchema = new mongoose.Schema({
         required: true,
     },
     birthDate: {
-        type: Number,
+        type: Date,
         required: true,
     },
     accountNumber: {
@@ -36,7 +36,7 @@ class Customer {
         if (this.profileAccount == true) {
             throw new Error('You already have an account, log in instead')
         } else {
-            let username = this.fullName;
+            let name = this.name;
             let password = passphrase;
             this.profileAccount = true;
             await this.save();
