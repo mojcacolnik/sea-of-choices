@@ -10,6 +10,7 @@ const Customer = require('./models/customer');
 const cors = require('cors');
 const helmet = require("helmet");
 const { errors } = require('celebrate');
+const mongoSanitize = require('express-mongo-sanitize')
 require('dotenv').config()
 
 var indexRouter = require('./routes/index');
@@ -42,6 +43,9 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(mongoSanitize({
+  replaceWith: '_'
+}))
 app.use(cookieParser());
 
 app.use(session({
