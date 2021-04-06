@@ -31,18 +31,6 @@ class Customer {
             throw new Error(`Cruise ${cruise} is sold out`)
         }
      }
-
-    async signUp(passphrase) {
-        if (this.profileAccount == true) {
-            throw new Error('You already have an account, log in instead')
-        } else {
-            let name = this.name;
-            let password = passphrase;
-            this.profileAccount = true;
-            await this.save();
-            return `Dear ${username}, welcome aboard!`
-        }
-    }
 }
 
 
