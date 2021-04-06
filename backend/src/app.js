@@ -4,21 +4,24 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const Customer = require('./models/customer');
-const cors = require('cors')
+const cors = require('cors');
+const helmet = require("helmet");
 require('dotenv').config()
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var cruiseRouter = require('./routes/cruises')
-var accountRouter = require('./routes/account')
+var cruiseRouter = require('./routes/cruises');
+var accountRouter = require('./routes/account');
 
-const mongooseConnection = require('./database-connection')
-const socketService = require('./socket-service')
+const mongooseConnection = require('./database-connection');
+const socketService = require('./socket-service');
 
 var app = express();
+
+app.use(helmet());
 
 app.use(
   cors({
