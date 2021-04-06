@@ -1,6 +1,7 @@
 const express = require('express')
-const router = express.Router()
 const passport = require('passport')
+
+const router = express.Router()
 
 const Customer = require('../models/customer')
 
@@ -11,7 +12,6 @@ router.get('/session', (req, res) => {
 
 router.post('/', async (req, res) => {
   const { name, birthDate, email, password } = req.body
-  console.log('test:', req.body)
 
   const user = new Customer({ name, birthDate, email })
   await user.setPassword(password)
@@ -35,9 +35,14 @@ router.post('/session', passport.authenticate('local', { failWithError: true }),
   res.send(req.user)
 })
 
-router.delete('/session', (req, res) => {
-  req.logout()
-  res.send(true)
+router.delete('/session', async (req, res) => {
+  await req.logout()
+
+  req.session.regenerate(err => {
+    if (err) return next(err)
+
+    return res.sendStatus(200)
+  })
 })
 
 module.exports = router
