@@ -21,8 +21,8 @@ const cruiseSchema = new mongoose.Schema({
     ],
     guests: [
         {
-            type: mongoose.Schema.Types.ObjectId, 
-            ref: 'Customer', 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Customer',
             autopopulate: { maxDepth: 2 }
         }
     ],
@@ -30,9 +30,9 @@ const cruiseSchema = new mongoose.Schema({
 });
 
 class Cruise {
-    
+
  }
-    
+
 
 cruiseSchema.loadClass(Cruise);
 cruiseSchema.plugin(autopopulate);
