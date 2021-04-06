@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import io from 'socket.io-client'
 
+Vue.use('axios')
 axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
 axios.defaults.withCredentials = true
 

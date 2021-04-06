@@ -6,12 +6,13 @@ var logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
-const Customer = require('./models/customer');
 const cors = require('cors');
 const helmet = require("helmet");
 const { errors } = require('celebrate');
 const mongoSanitize = require('express-mongo-sanitize')
 require('dotenv').config()
+
+const Customer = require('./models/customer');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -81,6 +82,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/cruises', cruiseRouter);
 app.use('/api/account', accountRouter);
 
+// error handler for celebrate errors
 app.use(errors());
 
 // catch 404 and forward to error handler

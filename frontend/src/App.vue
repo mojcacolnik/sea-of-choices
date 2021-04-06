@@ -24,7 +24,8 @@ export default {
   #app
     #nav
       .home
-      h1 Sea Of Choices
+      h1 WELCOME ABOARD!
+      h2 Wanna feel free? Cruise with me!
       nav.navbar.navbar-expand-lg.navbar-light.bg-light
         .container-fluid
           a.navbar-brand SEA OF CHOICES
