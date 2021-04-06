@@ -1,22 +1,24 @@
 <script>
-import Counter from '@/components/Counter.vue'
+import CruiseCard from '@/components/CruiseCard.vue'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Profile',
-  components: { Counter },
+  components: { CruiseCard },
   data() {
     return {
       users: [],
       time: new Date(),
-      message: ''
+      message: '',
+      cruises: [],
     }
   },
   async created() {
     this.users = await this.fetchUsers()
+    this.cruises = await this.fetchCruises()
   },
   methods: {
-    ...mapActions(['fetchUsers', 'goLive', 'sendMessageToLiveStream', 'joinStream']),
+    ...mapActions(['fetchUsers', 'goLive', 'sendMessageToLiveStream', 'joinStream', 'fetchCruises']),
     sendMessage(e) {
       e.preventDefault()
       this.sendMessageToLiveStream(this.message)
@@ -31,8 +33,11 @@ export default {
 
 <template lang="pug">
   .home(v-if="user" :user="user")
-    h1 Sea of Choices {{ user.name }}
-    p The time is: {{ time }}
+    h1 Hello, {{ user.name }}
+    p Today is: {{ time }}
+    h2 Availiable cruises:
+    div(v-for="cruise in cruises")
+      CruiseCard(:cruise="cruise" v-if="cruise")
     h2 Users
     div(v-for="user in users")
       router-link(to="`/users/${user.profileId}`") {{ user.name }}
