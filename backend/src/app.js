@@ -9,6 +9,7 @@ const passport = require('passport');
 const Customer = require('./models/customer');
 const cors = require('cors');
 const helmet = require("helmet");
+const { errors } = require('celebrate');
 require('dotenv').config()
 
 var indexRouter = require('./routes/index');
@@ -75,6 +76,8 @@ app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/cruises', cruiseRouter);
 app.use('/api/account', accountRouter);
+
+app.use(errors());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
