@@ -4,21 +4,26 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const Customer = require('./models/customer');
-const cors = require('cors')
+const cors = require('cors');
+const helmet = require("helmet");
+const { errors } = require('celebrate');
+const mongoSanitize = require('express-mongo-sanitize')
 require('dotenv').config()
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var cruiseRouter = require('./routes/cruises')
-var accountRouter = require('./routes/account')
+var cruiseRouter = require('./routes/cruises');
+var accountRouter = require('./routes/account');
 
-const mongooseConnection = require('./database-connection')
-const socketService = require('./socket-service')
+const mongooseConnection = require('./database-connection');
+const socketService = require('./socket-service');
 
 var app = express();
+
+app.use(helmet());
 
 app.use(
   cors({
@@ -38,6 +43,9 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(mongoSanitize({
+  replaceWith: '_'
+}))
 app.use(cookieParser());
 
 app.use(session({
@@ -72,6 +80,8 @@ app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/cruises', cruiseRouter);
 app.use('/api/account', accountRouter);
+
+app.use(errors());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

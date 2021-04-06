@@ -1,39 +1,67 @@
 const express = require('express')
 const { user } = require('../database-connection')
 const router = express.Router()
+const { celebrate, Joi, errors, Segments } = require('celebrate')
 
 const Cruise = require('../models/cruise')
 const Customer = require('../models/customer')
 
-// const customers = [
-//   Customer.create({
-//     fullName: 'Mojca Colnik',
-//     birthDate: 26-11-1992,
-//     accountNumber: 1111-2222-3333-4444,
-//     profileAccount: false
-//   }),
-//   Customer.create({
-//     fullName: 'Sandra Colnik',
-//     birthDate: 25-08-1982,
-//     accountNumber: 4444-5555-6666-7777,
-//     profileAccount: true
-//   })
-// ]
+/* GET user listings with celebrate validation*/
+router.get(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      name: Joi.string(),
+      birthDate: Joi.date(),
+    },
+  }),
+  async (req, res) => {
+    const query = {}
 
-/* GET users listing. */
+    if (req.query.name) {
+      query.name = req.query.name
+    }
 
-router.get('/', async (req, res) => {
-  const users = await Customer.find({})
-  res.send(users)
-})
+    if (req.query.birthDate) {
+      query.birthDate = req.query.birthDate
+    }
+
+    res.send(await Customer.find(query))
+  }
+)
+
+/* POST, create a user with celebrate validation */
+
+router.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      birthDate: Joi.date().required(),
+      email: Joi.string().required(),
+    },
+  }),
+  async (req, res) => {
+    const userToCreate = {
+      name: req.body.name,
+      birthDate: req.body.birthDate,
+      email: req.body.email,
+    }
+
+    const createdUser = await Customer.create(userToCreate)
+    res.send(createdUser)
+  }
+)
 
 router.get('/:profileId', async (req, res) => {
   const user = await Customer.findById(req.params.profileId)
   if (user) res.send(user)
-  else {
-    console.log('Please sign up first!')
-    res.sendStatus(404)
-  }
+  else res.sendStatus(404)
+})
+
+router.get('/:profileId/json', async (req, res) => {
+  const user = await Customer.findById(req.params.profileId)
+  res.send(user)
 })
 
 module.exports = router
