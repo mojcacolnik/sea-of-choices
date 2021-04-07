@@ -18,11 +18,15 @@ export default {
     this.cruises = await this.fetchCruises()
   },
   methods: {
-    ...mapActions(['fetchUsers', 'goLive', 'sendMessageToLiveStream', 'joinStream', 'fetchCruises']),
+    ...mapActions(['fetchUsers', 'goLive', 'sendMessageToLiveStream', 'joinStream', 'fetchCruises', 'logout']),
     sendMessage(e) {
       e.preventDefault()
       this.sendMessageToLiveStream(this.message)
       this.message = ''
+    },
+    async doLogout() {
+      await this.logout()
+      this.$router.push('/login')
     }
   },
   computed: {
@@ -34,6 +38,7 @@ export default {
 <template lang="pug">
   .home(v-if="user" :user="user")
     h1 Hello, {{ user.name }}
+    h2 Welcome aboard!
     p Today is: {{ time }}
     h2 Availiable cruises:
     div(v-for="cruise in cruises")
@@ -46,7 +51,9 @@ export default {
       div(v-for="stream in liveStreams")
         p {{ stream }}
         button(@click="joinStream(stream)") Join stream
-    button(@click="goLive") Go live
+    button.btn.btn-info(@click="goLive") Go live
+    div
+      a.button.btn.btn-primary(@click='doLogout') Logout
     div(v-if="currentLiveStream")
       h3 Live stream
       .messages
@@ -57,4 +64,5 @@ export default {
       form(@submit="sendMessage")
         input(type="text" v-model="message")
         input(type="submit" value="Send message")
+
 </template>
