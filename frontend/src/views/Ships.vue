@@ -1,10 +1,11 @@
 <script>
 import { mapActions } from 'vuex'
 import { mapState } from 'vuex'
+import ShipCard from '@/components/ShipCard.vue'
 
 export default {
   name: 'Ships',
-  components,
+  components: { ShipCard },
   data() {
     return {
       ships: [],
@@ -16,16 +17,25 @@ export default {
   methods: {
     ...mapActions(['fetchShips'])
   },
-  computed: {
-      ...mapState([ships])
-  }
+  // computed: {
+  //     ...mapState([ships])
+  // }
 }
 </script>
 
 <template lang="pug">
-  .container
-		h2 Meet the ships:
-		.row
-			.col(v-for="ship in ships")
-				ShipCard(:ship="ship" v-if="ship")
+	.ships
+		.container
+			h2 Meet the ships:
+			.row
+				.col(v-for="ship in ships")
+					ShipCard(:ships="ships" v-if="ship")
 </template>
+
+<style lang="scss" scoped>
+h2 {
+	margin-top: 100px;
+	margin-bottom: 70px;
+}
+
+</style>
