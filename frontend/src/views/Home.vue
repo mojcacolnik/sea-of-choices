@@ -21,6 +21,7 @@ export default {
 
 <template lang="pug">
     .home
+        h2 Wanna feel free? Cruise with me!
         CruiseCarousel
 
 
