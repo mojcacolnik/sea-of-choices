@@ -37,7 +37,7 @@ export default {
 
 <template lang="pug">
   .home(v-if="user" :user="user")
-    h1 Hello, {{ user.name }}
+    h1 Hello, {{ user.name }}!
     h2 Welcome aboard!
     p Today is: {{ time }}
     .container
@@ -71,6 +71,6 @@ export default {
 
 <style lang="scss" scoped>
 h2 {
-  padding: 10px;
+  padding: 30px;
 }
 </style>
