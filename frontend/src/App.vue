@@ -24,9 +24,7 @@ export default {
   #app
     #nav
       .home
-      h1 WELCOME ABOARD!
-      h2 Wanna feel free? Cruise with me!
-      nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light.navbar.fixed-top.navbar-light.bg-light
         .container-fluid
           a.navbar-brand SEA OF CHOICES
           button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
@@ -34,17 +32,18 @@ export default {
           #navbarNav.collapse.navbar-collapse
             ul.navbar-nav
               li.nav-item
-                router-link(to="/") Home &nbsp;
+                router-link(to="/") Home | &nbsp;
               li.nav-item
-                router-link(to="/ships") Ships &nbsp;
+                router-link(to="/ships") Ships | &nbsp;
               li.nav-item
-                router-link(to="/about-us") About Us &nbsp;
+                router-link(to="/about-us") About Us | &nbsp;
               li.nav-item
                 router-link(to="/store") Store &nbsp;
               li.nav-item
                 router-link.button.btn.btn-primary(to="/login") &nbsp; Login &nbsp;
               li.nav-item
                 router-link.button.btn.btn-success(to="/register") &nbsp; Sign Up &nbsp;
+
       //- router-link(to="/") HOME |
       //- router-link(to="/register") REGISTER |&nbsp;
       //- router-link(to="/login") LOGIN | &nbsp;
@@ -67,7 +66,7 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  padding: 0px;
 
   a {
     font-weight: bold;
