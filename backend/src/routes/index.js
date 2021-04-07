@@ -15,7 +15,7 @@ router.get('/initialize', async (req, res) => {
     await sandra.setPassword('test2')
     await sandra.save()
 
-    const cruiseOne = Cruise.create({
+    const cruiseOne = await Cruise.create({
       title: 'Mediteran',
       startDate: new Date('12-04-2022'),
       endDate: new Date('9-04-2022'),
@@ -23,7 +23,7 @@ router.get('/initialize', async (req, res) => {
       guests: [],
       vacancy: true,
     })
-    const cruiseTwo = Cruise.create({
+    const cruiseTwo = await Cruise.create({
       title: 'Southern',
       startDate: new Date('11-26-2021'),
       endDate: new Date('12-30-2021'),
@@ -31,7 +31,7 @@ router.get('/initialize', async (req, res) => {
       guests: [],
       vacancy: true,
     })
-    const cruiseThree = Cruise.create({
+    const cruiseThree = await Cruise.create({
       title: 'Tropic',
       startDate: new Date('3-3-2022'),
       endDate: new Date('4-3-2022'),
@@ -40,31 +40,31 @@ router.get('/initialize', async (req, res) => {
       vacancy: true,
     })
 
-    mojca.book(cruiseOne)
-    sandra.book(cruiseTwo)
-    mojca.book(cruiseThree)
-
-    const harmony = Ship.create({
+    const harmony = await Ship.create({
       cruiseline: 'AAA',
       name: 'Harmony',
       year: 2015,
       capacity: 5000,
       cruisesCompleted: [],
     })
-    const symphony = Ship.create({
+    const symphony = await Ship.create({
       cruiseline: 'BBB',
       name: 'Symphony',
       year: 2012,
       capacity: 4000,
       cruisesCompleted: [],
     })
-    const rhapsody = Ship.create({
+    const rhapsody = await Ship.create({
       cruiseline: 'CCC',
       name: 'Rhapsody',
       year: 2019,
       capacity: 8000,
       cruisesCompleted: [],
     })
+
+    await mojca.book(cruiseOne)
+    await sandra.book(cruiseTwo)
+    await mojca.book(cruiseThree)
 
     await harmony.sail(cruiseOne)
     await symphony.sail(cruiseTwo)
