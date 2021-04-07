@@ -40,9 +40,11 @@ export default {
     h1 Hello, {{ user.name }}
     h2 Welcome aboard!
     p Today is: {{ time }}
-    h2 Availiable cruises:
-    div(v-for="cruise in cruises")
-      CruiseCard(:cruise="cruise" v-if="cruise")
+    .container
+      h2 Availiable cruises:
+      .row
+        .col(v-for="cruise in cruises")
+          CruiseCard(:cruise="cruise" v-if="cruise")
     h2 Users
     div(v-for="user in users")
       router-link(to="`/users/${user.profileId}`") {{ user.name }}
@@ -66,3 +68,9 @@ export default {
         input(type="submit" value="Send message")
 
 </template>
+
+<style lang="scss" scoped>
+h2 {
+  padding: 10px;
+}
+</style>
