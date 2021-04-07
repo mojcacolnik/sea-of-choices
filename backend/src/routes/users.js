@@ -59,6 +59,14 @@ router.get('/:profileId', async (req, res) => {
   else res.sendStatus(404)
 })
 
+router.post('/:profileId/books', async (req, res) => {
+  const cruise = await Cruise.findById(req.body.id)
+  const user = await Customer.findById(req.params.profileId)
+
+  await user.book(cruise)
+  res.sendStatus(200)
+})
+
 router.get('/:profileId/json', async (req, res) => {
   const user = await Customer.findById(req.params.profileId)
   res.send(user)

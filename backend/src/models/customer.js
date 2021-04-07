@@ -1,44 +1,47 @@
-const mongoose = require('mongoose');
-const autopopulate = require('mongoose-autopopulate');
-const cruise = require('./cruise');
-const passportLocalMongoose = require('passport-local-mongoose');
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
+const cruise = require('./cruise')
+const passportLocalMongoose = require('passport-local-mongoose')
 
-
-const customerSchema = new mongoose.Schema({
+const customerSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     birthDate: {
-        type: Date,
-        required: true,
+      type: Date,
+      required: true,
     },
-    accountNumber: {
-        type: Number,
-
+    email: {
+      type: String,
+    },
+    cruises: {
+      type: Array,
     },
     profileAccount: Boolean,
-})
+  },
+  { timestamps: true }
+)
 
 class Customer {
-    async book(cruise) {
-        const availableCruises = await Cruise.find(cruise)
-        if (cruise.vacancy) {
-          cruise.guests.push(this)
-          await this.save()
-          await cruise.save()
-        } else {
-            throw new Error(`Cruise ${cruise} is sold out`)
-        }
-     }
+  async book(cruise) {
+    if (cruise.vacancy) {
+      cruise.guests.push(this)
+      this.cruises.push(cruise)
+
+      await this.save()
+      await cruise.save()
+    } else {
+      throw new Error(`Cruise ${cruise} is sold out`)
+    }
+  }
 }
 
-
-
-customerSchema.loadClass(Customer);
-customerSchema.plugin(autopopulate);
+customerSchema.loadClass(Customer)
+customerSchema.plugin(autopopulate)
 customerSchema.plugin(passportLocalMongoose, {
-    usernameField: 'email',
+  usernameField: 'email',
 })
 
-module.exports = mongoose.model('Customer', customerSchema);
+module.exports = mongoose.model('Customer', customerSchema)
