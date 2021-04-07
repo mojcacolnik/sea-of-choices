@@ -12,8 +12,7 @@ export default {
 			img.card-img-top(src='https://source.unsplash.com/random/200x150' alt='ship image')
 			.card-body
 				p.card-text
-					| Some quick example text to build on the card title and make up the bulk of the card's content.
-
+					| The {{ ship.name }} from the {{ ship.cruiseline }} was built in {{ ship.year }} and can take up to {{ ship.capacity }} guests.
 </template>
 
 <style lang="scss" scoped>
