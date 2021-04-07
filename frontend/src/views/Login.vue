@@ -48,4 +48,7 @@ label {
   display: block;
   margin: 1rem 0;
 }
+.login {
+  padding: 100px;
+}
 </style>

@@ -1,10 +1,10 @@
 <script>
-import CruiseCarousel from '@/components/CruiseCarousel.vue'
+import HomeCarousel from '@/components/HomeCarousel.vue'
 import { mapActions } from 'vuex'
 
 export default {
     name: "Home",
-    components:  { CruiseCarousel },
+    components:  { HomeCarousel },
     data() {
         return {
             cruises: []
@@ -21,7 +21,8 @@ export default {
 
 <template lang="pug">
     .home
-        CruiseCarousel
+        h2 Wanna feel free? Cruise with me!
+        HomeCarousel
 
 
 </template>

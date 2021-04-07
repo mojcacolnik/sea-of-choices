@@ -1,7 +1,7 @@
 <script>
 export default {
-    name: 'CruiseCarousel',
-    props: ['cruise'],
+    name: 'HomeCarousel',
+    props: ['cruises'],
     data() {
         return {
             price: '749$'
@@ -19,19 +19,19 @@ export default {
                 button(type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide-to='2' aria-label='Slide 3')
             .carousel-inner
                 .carousel-item.active
-                    img.d-block.w-100(src='https://source.unsplash.com/random/400x150' alt='Ocean image')
+                    img.d-block.w-100(src='https://source.unsplash.com/random/400x250' alt='Ocean image')
                     .carousel-caption.d-none.d-md-block
-                        h5 CRUISES
+                        h5 CRUISE THE WORLD
                         p Some representative placeholder content for the first slide.
                 .carousel-item
-                    img.d-block.w-100(src='https://source.unsplash.com/random/400x151' alt='Ocean image')
-                    .carousel-caption.d-none.d-md-block
-                        h5 CONTACT US!
-                        p Some representative placeholder content for the second slide.
-                .carousel-item
-                    img.d-block.w-100(src='https://source.unsplash.com/random/400x152' alt='Ocean image')
+                    img.d-block.w-100(src='https://source.unsplash.com/random/400x251' alt='Ocean image')
                     .carousel-caption.d-none.d-md-block
                         h5 EVENTS
+                        p Some representative placeholder content for the second slide.
+                .carousel-item
+                    img.d-block.w-100(src='https://source.unsplash.com/random/400x252' alt='Ocean image')
+                    .carousel-caption.d-none.d-md-block
+                        h5 CONTACT US!
                         p Some representative placeholder content for the third slide.
             button.carousel-control-prev(type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide='prev')
                 span.carousel-control-prev-icon(aria-hidden='true')
@@ -39,9 +39,6 @@ export default {
             button.carousel-control-next(type='button' data-bs-target='#carouselExampleCaptions' data-bs-slide='next')
                 span.carousel-control-next-icon(aria-hidden='true')
                 span.visually-hidden Next
-
-
-
 </template>
 
 <style lang="scss" scoped>
