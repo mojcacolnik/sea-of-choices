@@ -26,14 +26,17 @@ const customerSchema = new mongoose.Schema(
 
 class Customer {
   async book(cruise) {
-    if (cruise.vacancy) {
+    try{
+     if (cruise.vacancy) {
       cruise.guests.push(this)
       this.cruises.push(cruise)
 
       await this.save()
       await cruise.save()
-    } else {
-      throw new Error(`Cruise ${cruise} is sold out`)
+    }
+
+    } catch(e) {
+      throw e(`Cruise ${cruise.title} is sold out`)
     }
   }
 }

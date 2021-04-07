@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const Customer = require('./customer')
 
 const cruiseSchema = new mongoose.Schema({
     title: {
