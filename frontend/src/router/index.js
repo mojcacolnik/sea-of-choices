@@ -5,6 +5,8 @@ import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import UserDetail from '../views/UserDetail.vue'
 import Home from '../views/Home.vue'
+import ShipCard from '../components/ShipCard.vue'
+import Ships from '../views/Ships.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +24,11 @@ export default function init(store) {
         path: '/users/:profileId',
         name: 'UserDetail',
         component: { UserDetail }
+      },
+      {
+        path: '/ships',
+        name: 'Ships',
+        component: { ShipCard }
       },
       {
         path: '/register',

@@ -41,10 +41,11 @@ const store = new Vuex.Store({
   state: {
     count: 0,
     user: null,
-    cruise: [],
+    cruises: [],
     currentLiveStream: null,
     liveStreams: [],
-    liveStreamMessages: []
+    liveStreamMessages: [],
+    ships: []
   },
   mutations: {
     [mutations.INCREMENT_COUNT](state) {
@@ -82,6 +83,10 @@ const store = new Vuex.Store({
     async fetchUsers() {
       const usersRequest = await axios.get('/api/users')
       return usersRequest.data
+    },
+    async fetchShips() {
+      const shipsRequest = await axios.get('/api/ships')
+      return shipsRequest.data
     },
     async fetchSession({ commit }) {
       const user = await axios.get('/api/account/session')
