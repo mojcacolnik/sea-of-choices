@@ -32,23 +32,16 @@ export default {
           #navbarNav.collapse.navbar-collapse
             ul.navbar-nav
               li.nav-item
-                router-link(to="/") Home | &nbsp;
+                router-link(to="/") Home
               li.nav-item
-                router-link(to="/ships") Ships | &nbsp;
+                router-link(to="/ships") Ships
               li.nav-item
-                router-link(to="/about-us") About Us | &nbsp;
+                router-link(to="/about-us") About Us
               li.nav-item
-                router-link(to="/store") Store &nbsp;
-              li.nav-item
-                router-link.button.btn.btn-primary(to="/login") &nbsp; Login &nbsp;
-              li.nav-item
-                router-link.button.btn.btn-success(to="/register") &nbsp; Sign Up &nbsp;
-
-      //- router-link(to="/") HOME |
-      //- router-link(to="/register") REGISTER |&nbsp;
-      //- router-link(to="/login") LOGIN | &nbsp;
-      //- router-link(to="/profile") PROFILE | &nbsp;
-      //- a(@click='doLogout') Logout
+                router-link(to="/store") Store
+            ul.nav-buttons
+              router-link.button.btn.btn-primary.nav-item(to="/login") Login
+              router-link.button.btn.btn-success.nav-item(to="/register") Sign Up
     router-view
 
  </template>
@@ -75,6 +68,13 @@ export default {
     &.router-link-exact-active {
       color: #42b983;
     }
+  }
+  .nav-buttons {
+    margin-left: auto;
+    padding: 10px;
+  }
+  .nav-item {
+    margin-left: 20px;
   }
 }
 </style>
