@@ -33,11 +33,9 @@ const shipSchema = new mongoose.Schema(
 
 class Ship {
   async sail(cruise) {
-    await this.cruisesCompleted.push(cruise)
-    console.log('hello')
+    this.cruisesCompleted.push(cruise)
 
     await this.save()
-    console.log('hihi')
   }
 }
 
