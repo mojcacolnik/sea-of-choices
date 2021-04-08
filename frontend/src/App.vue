@@ -4,9 +4,6 @@ import axios from 'axios'
 
 export default {
   name: 'App',
-  async created() {
-    console.log((await axios.get('/api/account/session')).data)
-  },
   methods: {
     ...mapActions(['logout']),
     async doLogout() {
@@ -55,7 +52,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #2a4e72;
 }
 
 #nav {
