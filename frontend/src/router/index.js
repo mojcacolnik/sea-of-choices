@@ -5,8 +5,9 @@ import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import UserDetail from '../views/UserDetail.vue'
 import Home from '../views/Home.vue'
-import ShipCard from '../components/ShipCard.vue'
+import ShipDetail from '../views/ShipDetail.vue'
 import Ships from '../views/Ships.vue'
+import CruiseDetail from '../views/CruiseDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -23,12 +24,17 @@ export default function init(store) {
       {
         path: '/users/:profileId',
         name: 'UserDetail',
-        component: { UserDetail }
+        component:  UserDetail
       },
       {
         path: '/ships',
         name: 'Ships',
-        component: { ShipCard }
+        component: Ships
+      },
+      {
+        path: '/ships/:id',
+        name: 'ShipDetail',
+        component: ShipDetail
       },
       {
         path: '/register',
@@ -56,6 +62,11 @@ export default function init(store) {
           if (!store.state.user) return next('/login')
           return next()
         }
+      },
+      {
+        path: '/cruises/:id',
+        name: 'CruiseDetail',
+        component: CruiseDetail
       }
     ]
   })
