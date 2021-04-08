@@ -20,7 +20,13 @@ export default {
 </script>
 
 <template lang="pug">
-	.home
-		h2 Wanna feel free? Cruise with me!
+.home
+	h2.text-primary Wanna feel free? Cruise with me!
 		HomeCarousel
 </template>
+
+<style lang="scss" scoped>
+h2 {
+	margin-top: 100px;
+}
+</style>
