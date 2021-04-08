@@ -14,7 +14,7 @@ export default {
     }
   },
   async created() {
-    this.users = await this.fetchUsers()
+    // this.users = await this.fetchUsers()
     this.cruises = await this.fetchCruises()
   },
   methods: {
@@ -47,7 +47,7 @@ export default {
           CruiseCard(:cruise="cruise" v-if="cruise")
     h2 Users
     div(v-for="user in users")
-      router-link(to="`/users/${user.profileId}`") {{ user.name }}
+      router-link(:to="`/users/${user._id}`") {{ user.name }}
     div(v-if="liveStreams.length")
       h2 Live streams
       div(v-for="stream in liveStreams")
