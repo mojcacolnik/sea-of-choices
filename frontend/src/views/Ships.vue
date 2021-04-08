@@ -18,7 +18,7 @@ export default {
     ...mapActions(['fetchShips'])
   },
   // computed: {
-  //     ...mapState([ships])
+  //     ...mapState(['ships'])
   // }
 }
 </script>
@@ -29,7 +29,7 @@ export default {
 			h2 Meet the ships:
 			.row
 				.col(v-for="ship in ships")
-					ShipCard(:ships="ships" v-if="ship")
+					ShipCard(:ship="ship" v-if="ship")
 </template>
 
 <style lang="scss" scoped>
