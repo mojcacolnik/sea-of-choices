@@ -14,15 +14,19 @@ export default {
         this.cruises = await this.fetchCruises()
     },
     methods: {
-        ...mapActions(['fetchCruises'])
-    },
+        ...mapActions(['fetchCruises']),
+		},
 }
 </script>
 
 <template lang="pug">
-    .home
-        h2 Wanna feel free? Cruise with me!
-        HomeCarousel
-
-
+.home
+	h2.text-primary Wanna feel free? Cruise with me!
+		HomeCarousel
 </template>
+
+<style lang="scss" scoped>
+h2 {
+	margin-top: 100px;
+}
+</style>

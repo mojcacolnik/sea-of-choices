@@ -16,9 +16,13 @@ const customerSchema = new mongoose.Schema(
     email: {
       type: String,
     },
-    cruises: {
-      type: Array,
-    },
+    cruises: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Cruise',
+        autopopulate: { maxDepth: 2 },
+      },
+    ],
     profileAccount: Boolean,
   },
   { timestamps: true }
@@ -26,14 +30,16 @@ const customerSchema = new mongoose.Schema(
 
 class Customer {
   async book(cruise) {
-    if (cruise.vacancy) {
-      cruise.guests.push(this)
-      this.cruises.push(cruise)
+    try {
+      if (cruise.vacancy) {
+        cruise.guests.push(this)
+        this.cruises.push(cruise)
 
-      await this.save()
-      await cruise.save()
-    } else {
-      throw new Error(`Cruise ${cruise} is sold out`)
+        await this.save()
+        await cruise.save()
+      }
+    } catch (e) {
+      throw e(`Cruise ${cruise.title} is sold out`)
     }
   }
 }

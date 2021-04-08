@@ -1,8 +1,8 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
@@ -14,15 +14,17 @@ require('dotenv').config()
 
 const Customer = require('./models/customer');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var cruiseRouter = require('./routes/cruises');
-var accountRouter = require('./routes/account');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const cruiseRouter = require('./routes/cruises');
+const accountRouter = require('./routes/account');
+const shipRouter = require('./routes/ships')
+
 
 const mongooseConnection = require('./database-connection');
 const socketService = require('./socket-service');
 
-var app = express();
+const app = express();
 
 app.use(helmet());
 
@@ -81,6 +83,7 @@ app.use('/api/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/cruises', cruiseRouter);
 app.use('/api/account', accountRouter);
+app.use('/api/ships', shipRouter);
 
 // error handler for celebrate errors
 app.use(errors());

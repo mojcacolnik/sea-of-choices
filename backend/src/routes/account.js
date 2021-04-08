@@ -6,7 +6,7 @@ const router = express.Router()
 const Customer = require('../models/customer')
 
 router.get('/session', (req, res) => {
-  console.log(req.user)
+  console.log('user', req.user)
   res.send(req.user)
 })
 
@@ -22,11 +22,13 @@ router.post('/', async (req, res) => {
 
 router.post('/', async (req, res, next) => {
   const { name, address, email, password } = req.body
+  console.log("register 1", req.body)
   try {
     const user = await User.register({ name, address, email }, password)
-
+console.log("register 2", user)
     res.send(user)
   } catch (e) {
+    console.log("register error", e)
     next(e)
   }
 })

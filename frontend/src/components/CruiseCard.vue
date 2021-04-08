@@ -13,7 +13,7 @@ export default {
 <template lang="pug">
 	.container
 		.card(style='width: 18rem;')
-				img.card-img-top(src='https://source.unsplash.com/random/150x100' alt='')
+				img.card-img-top(src='https://source.unsplash.com/random/150x100' alt='cruise image')
 				.card-body
 						h5.card-title {{ cruise.title }}
 						p.card-text
@@ -23,7 +23,7 @@ export default {
 						li.list-group-item End: {{ cruise.endDate }}
 						li.list-group-item Route: {{ cruise.route }}
 				.card-body
-						router-link.card-link(to="`/cruises/${cruise.id}`") See more...
+						router-link.card-link(:to="`/cruises/${cruise._id}`") See more...
 						a.card-link(href='#') BOOK
 </template>
 
