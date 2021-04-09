@@ -94,8 +94,9 @@ const store = new Vuex.Store({
       const shipsRequest = await axios.get('/api/ships')
       return shipsRequest.data
     },
-    async book(store, cruise) {
+    async book({ dispatch }, cruise) {
       const bookRequest = await axios.post(`/api/users/books`, { cruiseId: cruise._id })
+      await dispatch('fetchSession')
       console.log("book request", bookRequest)
       return bookRequest.data
     },
