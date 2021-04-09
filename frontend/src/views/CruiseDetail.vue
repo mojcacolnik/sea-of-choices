@@ -20,6 +20,7 @@ export default {
 
       try {
         await this.book(this.cruise);
+        window.alert('Succesfully booked. Start packing!')
         this.$router.push("/profile");
       } catch (err) {
 		  console.log(err)
@@ -45,7 +46,7 @@ export default {
 				td {{ cruise.endDate }}
 	router-link.btn.btn-primary(to="/profile") BACK
 	//- router-link.btn.btn-info(@click="book") BOOK
-	button(@click="submitBooking") BOOK
+	button.btn.btn-primary(@click="submitBooking") BOOK
 
 </template>
 

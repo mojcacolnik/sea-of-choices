@@ -45,6 +45,21 @@ export default {
       .row
         .col(v-for="cruise in cruises")
           CruiseCard(:cruise="cruise" v-if="cruise")
+    .container
+      h2 Booked cruises:
+      .row
+        .col(v-for="cruise in user.cruises")
+          h3.text-primary {{ cruise.title }} cruise:
+          table.table.table-primary
+            tbody
+              tr
+                th Route
+                th Starts
+                th Ends
+              tr
+                td {{ cruise.route }}
+                td {{ cruise.startDate }}
+                td {{ cruise.endDate }}
     h2 Users
     div(v-for="user in users")
       router-link(:to="`/users/${user._id}`") {{ user.name }}
@@ -70,6 +85,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+h1 {
+  margin-top: 100px;
+}
+
 h2 {
   padding: 30px;
 }

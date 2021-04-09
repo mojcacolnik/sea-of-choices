@@ -24,7 +24,7 @@ export default {
 						li.list-group-item Route: {{ cruise.route }}
 				.card-body
 						router-link.card-link(:to="`/cruises/${cruise._id}`") See more...
-						a.card-link(href='#') BOOK
+
 </template>
 
 <style lang="scss" scoped>

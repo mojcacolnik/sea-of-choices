@@ -19,6 +19,7 @@ export default {
       e.preventDefault()
 
       try {
+        this.$router.push('/login')
         await this.register({
           name: this.name,
           birthDate: this.birthDate,
@@ -26,7 +27,7 @@ export default {
           password: this.password
         })
 
-        this.$router.push('/login')
+
       } catch (e) {
         this.backendError = e.response.data.message
       }
