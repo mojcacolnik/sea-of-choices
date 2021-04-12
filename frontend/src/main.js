@@ -14,6 +14,11 @@ Vue.filter('formatDate', (value) => {
 
 Vue.config.productionTip = false
 
+Vue.filter('formatArray', function formatArray(array) {
+      let route = array.join(' => ')
+      return route
+})
+
 async function main() {
   let storeInstance = await store()
 
