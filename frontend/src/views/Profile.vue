@@ -32,12 +32,6 @@ export default {
   computed: {
     ...mapState(['currentLiveStream', 'liveStreams', 'user', 'liveStreamMessages']),
   },
-    filters: {
-      formatArray(array) {
-      let route = array.join(' => ')
-      return route
-    }
-  }
 }
 
 </script>

@@ -28,12 +28,6 @@ export default {
       }
     },
   },
-   filters: {
-      formatArray(array) {
-      let route = array.join(' => ')
-      return route
-    }
-  }
 };
 </script>
 
