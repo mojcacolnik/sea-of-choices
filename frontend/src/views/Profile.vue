@@ -30,9 +30,16 @@ export default {
     }
   },
   computed: {
-    ...mapState(['currentLiveStream', 'liveStreams', 'user', 'liveStreamMessages'])
+    ...mapState(['currentLiveStream', 'liveStreams', 'user', 'liveStreamMessages']),
+  },
+    filters: {
+      formatArray(value) {
+      let array = value.join(' => ')
+      return array
+    }
   }
 }
+
 </script>
 
 <template lang="pug">
@@ -57,7 +64,7 @@ export default {
                 th Starts
                 th Ends
               tr
-                td {{ cruise.route }}
+                td {{ cruise.route | formatArray }}
                 td {{ cruise.startDate }}
                 td {{ cruise.endDate }}
     h2 Users

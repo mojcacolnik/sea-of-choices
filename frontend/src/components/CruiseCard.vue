@@ -6,7 +6,13 @@ export default {
         return {
             defaultBio: 'This cruise is pending'
         }
+    },
+	 filters: {
+      formatArray(value) {
+      let array = value.join(' => ')
+      return array
     }
+  }
 }
 </script>
 
@@ -21,7 +27,7 @@ export default {
 				ul.list-group.list-group-flush
 						li.list-group-item Departure: {{ cruise.startDate}}
 						li.list-group-item End: {{ cruise.endDate }}
-						li.list-group-item Route: {{ cruise.route }}
+						li.list-group-item Route: {{ cruise.route | formatArray }}
 				.card-body
 						router-link.card-link(:to="`/cruises/${cruise._id}`") See more...
 
