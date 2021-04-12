@@ -7,12 +7,6 @@ export default {
             defaultBio: 'This cruise is pending'
         }
     },
-	 filters: {
-      formatArray(array) {
-      let route = array.join(' => ')
-      return route
-    }
-  }
 }
 </script>
 
