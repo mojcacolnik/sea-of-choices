@@ -70,8 +70,6 @@ export default {
         p {{ stream }}
         button(@click="joinStream(stream)") Join stream
     button.btn.btn-info(@click="goLive") Go live
-    div
-      a.button.btn.btn-primary(@click='doLogout') Logout
     div(v-if="currentLiveStream")
       h3 Live stream
       .messages
