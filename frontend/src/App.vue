@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import axios from 'axios'
 
 export default {
@@ -9,7 +9,10 @@ export default {
     async doLogout() {
       await this.logout()
       this.$router.push('/login')
-    }
+    },
+  },
+  computed: {
+    ...mapState(['user'])
   }
 }
 
@@ -36,9 +39,13 @@ export default {
                 router-link(to="/about-us") About Us
               li.nav-item
                 router-link(to="/store") Store
-            ul.nav-buttons
-              router-link.button.btn.btn-primary.nav-item(to="/login") Login
-              router-link.button.btn.btn-success.nav-item(to="/register") Sign Up
+            ul.nav-buttons(:user="user")
+              .user-buttons(v-if="user")
+                router-link.button.btn.btn-info.nav-item(to="/edit-profile") Edit profile
+                a.button.btn.btn-primary.nav-item(@click="doLogout") Logout
+              .user-buttons(v-else)
+                router-link.button.btn.btn-primary.nav-item(to="/login") Login
+                router-link.button.btn.btn-primary.nav-item(to="/register") Sign up
     router-view
 
  </template>
