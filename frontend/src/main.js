@@ -9,6 +9,10 @@ import 'bootstrap'
 
 Vue.config.productionTip = false
 
+Vue.filter('formatArray', function formatArray(array) {
+      return array.join(' => ')
+})
+
 async function main() {
   let storeInstance = await store()
 
