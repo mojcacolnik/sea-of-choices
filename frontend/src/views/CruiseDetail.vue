@@ -1,8 +1,8 @@
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 
 export default {
-  name: "CruiseDetail",
+  name: 'CruiseDetail',
   components: {},
   data() {
     return {
@@ -14,14 +14,14 @@ export default {
     this.cruise = await this.fetchCruise(this.$route.params.id)
   },
   methods: {
-    ...mapActions(["fetchCruise", "book", "fetchUser"]),
+    ...mapActions(['fetchCruise', 'book', 'fetchUser']),
     async submitBooking(e) {
       e.preventDefault();
 
       try {
         await this.book(this.cruise);
         window.alert('Succesfully booked. Start packing!')
-        this.$router.push("/profile");
+        this.$router.push('/profile');
       } catch (err) {
 		  console.log(err)
         this.backendError = err.response.data.message;
@@ -31,8 +31,8 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.about(:cruise="cruise" v-if="cruise")
+<template lang='pug'>
+.about(:cruise='cruise' v-if='cruise')
 	h2 {{ cruise.title }}
 	table.table.table-primary
 		tbody
@@ -44,13 +44,13 @@ export default {
 				td {{ cruise.route }}
 				td {{ cruise.startDate }}
 				td {{ cruise.endDate }}
-	router-link.btn.btn-primary(to="/profile") BACK
-	//- router-link.btn.btn-info(@click="book") BOOK
-	button.btn.btn-primary(@click="submitBooking") BOOK
+	router-link.btn.btn-primary(to='/profile') BACK
+	//- router-link.btn.btn-info(@click='book') BOOK
+	button.btn.btn-primary(@click='submitBooking') BOOK
 
 </template>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .about {
   margin-top: 100px;
 }
