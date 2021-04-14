@@ -10,8 +10,7 @@ import 'bootstrap'
 Vue.config.productionTip = false
 
 Vue.filter('formatArray', function formatArray(array) {
-      let route = array.join(' => ')
-      return route
+      return array.join(' => ')
 })
 
 async function main() {
