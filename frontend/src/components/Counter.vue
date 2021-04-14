@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<template lang="pug">
+<template lang='pug'>
 	div
 		p Visitor count: {{ count }}
 </template>
