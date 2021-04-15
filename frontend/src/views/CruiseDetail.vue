@@ -42,11 +42,11 @@ export default {
 				th Ends
 			tr
 				td {{ cruise.route | formatArray }}
-				td {{ cruise.startDate }}
-				td {{ cruise.endDate }}
-	router-link.btn.btn-primary(to='/profile') BACK
-	//- router-link.btn.btn-info(@click='book') BOOK
-	button.btn.btn-primary(@click='submitBooking') BOOK
+				td {{ cruise.startDate | formatDate }}
+				td {{ cruise.endDate | formatDate }}
+	router-link.btn.btn-primary(to="/profile") BACK
+	//- router-link.btn.btn-info(@click="book") BOOK
+	button.btn.btn-primary(@click="submitBooking") BOOK
 
 </template>
 

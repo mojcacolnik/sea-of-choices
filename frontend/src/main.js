@@ -6,6 +6,11 @@ import store from './store'
 
 import 'normalize.css'
 import 'bootstrap'
+import { format } from 'date-fns';
+
+Vue.filter('formatDate', (value) => {
+  return !!value ? format(value, `DD MM YYYY 'at' hh:mm`) : 'Invalid date';
+})
 
 Vue.config.productionTip = false
 

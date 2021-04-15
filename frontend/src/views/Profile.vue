@@ -40,7 +40,7 @@ export default {
   .home(v-if='user' :user='user')
     h1 Hello, {{ user.name }}!
     h2 Welcome aboard!
-    p Today is: {{ time }}
+    p Today is: {{ time | formatDate }}
     .container
       h2 Availiable cruises:
       .row

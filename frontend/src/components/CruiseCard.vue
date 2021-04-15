@@ -19,8 +19,8 @@ export default {
 						p.card-text
 								| Some quick example text to build on the card title and make up the bulk of the card's content.
 				ul.list-group.list-group-flush
-						li.list-group-item Departure: {{ cruise.startDate}}
-						li.list-group-item End: {{ cruise.endDate }}
+						li.list-group-item Departure: {{ cruise.startDate | formatDate }}
+						li.list-group-item End: {{ cruise.endDate | formatDate }}
 						li.list-group-item Route: {{ cruise.route | formatArray }}
 				.card-body
 						router-link.card-link(:to='`/cruises/${cruise._id}`') See more...
