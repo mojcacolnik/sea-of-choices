@@ -2,7 +2,7 @@
 
 This is a web app for a cruiseship agency.
 
-It is a full-stack JavaScript app. In backend it has Node.js, Express.js and MongoDB. In frontend it has Vue.js and Vuex.
+It is a full-stack JavaScript app. On the backend it has Node.js, Express.js and MongoDB. On the frontend it has Vue.js and Vuex.
 
 # Installation
 
