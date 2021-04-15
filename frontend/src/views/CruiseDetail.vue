@@ -28,6 +28,12 @@ export default {
       }
     },
   },
+   filters: {
+      formatArray(value) {
+      let array = value.join(' => ')
+      return array
+    }
+  }
 };
 </script>
 
@@ -41,7 +47,7 @@ export default {
 				th Starts
 				th Ends
 			tr
-				td {{ cruise.route }}
+				td {{ cruise.route | formatArray }}
 				td {{ cruise.startDate | formatDate }}
 				td {{ cruise.endDate | formatDate }}
 	router-link.btn.btn-primary(to="/profile") BACK
