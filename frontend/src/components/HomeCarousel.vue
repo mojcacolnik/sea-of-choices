@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<template lang="pug">
+<template lang='pug'>
 	.box
 		#carouselExampleCaptions.carousel.slide(data-bs-ride='carousel')
 			.carousel-indicators
@@ -41,7 +41,7 @@ export default {
 				span.visually-hidden Next
 </template>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 
 
 </style>

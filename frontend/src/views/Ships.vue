@@ -23,16 +23,16 @@ export default {
 }
 </script>
 
-<template lang="pug">
+<template lang='pug'>
 	.ships
 		.container
 			h2 Meet the ships:
 			.row
-				.col(v-for="ship in ships")
-					ShipCard(:ship="ship" v-if="ship")
+				.col(v-for='ship in ships')
+					ShipCard(:ship='ship' v-if='ship')
 </template>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 h2 {
 	margin-top: 100px;
 	margin-bottom: 70px;

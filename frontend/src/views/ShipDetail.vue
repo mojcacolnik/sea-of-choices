@@ -18,8 +18,8 @@ export default {
 }
 </script>
 
-<template lang="pug">
-.about(:ship="ship" v-if="ship")
+<template lang='pug'>
+.about(:ship='ship' v-if='ship')
 	h2 {{ ship.name }}
 	table.table.table-info
 		tbody
@@ -31,11 +31,11 @@ export default {
 				td {{ ship.cruiseline }}
 				td {{ ship.year }}
 				td {{ ship.capacity }}
-	router-link.btn.btn-primary(to="/ships") BACK
+	router-link.btn.btn-primary(to='/ships') BACK
 
 </template>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .about {
 	margin-top: 100px;
 }

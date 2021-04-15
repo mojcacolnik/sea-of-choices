@@ -3,7 +3,7 @@ import HomeCarousel from '@/components/HomeCarousel.vue'
 import { mapActions } from 'vuex'
 
 export default {
-    name: "Home",
+    name: 'Home',
     components:  { HomeCarousel },
     data() {
         return {
@@ -19,13 +19,13 @@ export default {
 }
 </script>
 
-<template lang="pug">
+<template lang='pug'>
 .home
 	h2.text-primary Wanna feel free? Cruise with me!
 		HomeCarousel
 </template>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 h2 {
 	margin-top: 100px;
 }

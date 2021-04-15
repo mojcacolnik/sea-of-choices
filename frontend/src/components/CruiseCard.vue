@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<template lang="pug">
+<template lang='pug'>
 	.container
 		.card(style='width: 18rem;')
 				img.card-img-top(src='https://source.unsplash.com/random/150x100' alt='cruise image')
@@ -23,11 +23,11 @@ export default {
 						li.list-group-item End: {{ cruise.endDate | formatDate }}
 						li.list-group-item Route: {{ cruise.route | formatArray }}
 				.card-body
-						router-link.card-link(:to="`/cruises/${cruise._id}`") See more...
+						router-link.card-link(:to='`/cruises/${cruise._id}`') See more...
 
 </template>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .box {
     padding: 2rem;
     border: 2px solid rgb(14, 47, 89);
